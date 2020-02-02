@@ -1097,15 +1097,19 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
               if(compute && !boundp2)
               {
-                  //const float NU1 = 0.801;
+                  const float NU1 = 0.801;
 
-                  const float NU1 = 0.798;
+                  //const float NU1 = 0.798;
 
                  const float va = (massp1/rhopp1); //Volume
                  const float vb = (massp2/velrhop2.w);
                   const float robar=(rhopp1+velrhop2.w);
-                  const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
-                  //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb);
+                  //const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
+                  const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb)/massp1;
+                  /*if (mu_ij_Vol>340282346638528859811704183484516925440.0000000000000000  || mu_ij_Vol <.000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                  {
+                      const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb);
+                  }*/
                   const float dist =sqrt(rr2);
                   //const float visc_factor_x = mu_ij_Vol* dvx/(massp1*dist);
                   //const float visc_factor_y = mu_ij_Vol* dvy/(massp1*dist);
@@ -1114,7 +1118,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
                   const float visc_factor_x = mu_ij_Vol* dvx;
                   const float visc_factor_y = mu_ij_Vol* dvy;
-                  cons float visc_factor_z = mu_ij_Vol* dvz;
+                  const float visc_factor_z = mu_ij_Vol* dvz;
 
                   //const float frxyz = frx+fry+frz;
 
