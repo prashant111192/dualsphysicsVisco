@@ -998,7 +998,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
             //===== Acceleration =====
             if(compute){
-              const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w) + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
+              const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w);// + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
               const float p_vpm=-prs*massp2*ftmassp1;
               acep1.x+=p_vpm*frx; acep1.y+=p_vpm*fry; acep1.z+=p_vpm*frz;
             }
@@ -1104,7 +1104,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                  const float va = (massp1/rhopp1); //Volume
                  const float vb = (massp2/velrhop2.w);
                   const float robar=(rhopp1+velrhop2.w);
-                  const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb);
+                  const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
                   //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb);
                   const float dist =sqrt(rr2);
                   //const float visc_factor_x = mu_ij_Vol* dvx/(massp1*dist);
@@ -1112,9 +1112,9 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   //const float visc_factor_z = mu_ij_Vol* dvz/(massp1*dist);
 
 
-                  const float visc_factor_x = mu_ij_Vol* dvx/(massp1);
-                  const float visc_factor_y = mu_ij_Vol* dvy/(massp1);
-                  const float visc_factor_z = mu_ij_Vol* dvz/(massp1);
+                  const float visc_factor_x = mu_ij_Vol* dvx;
+                  const float visc_factor_y = mu_ij_Vol* dvy;
+                  cons float visc_factor_z = mu_ij_Vol* dvz;
 
                   //const float frxyz = frx+fry+frz;
 
