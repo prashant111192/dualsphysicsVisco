@@ -1,0 +1,41 @@
+
+
+ <DUALSPHYSICS4> Copyright (c) 2019 by
+ Dr Jose M. Dominguez, Dr Alejandro Crespo,
+ Prof. Moncho Gomez Gesteira,  Prof. Benedict Rogers,
+ Dr Georgios Fourtakas, Prof. Peter Stansby, Dr Ricardo Canelas,
+ Dr Renato Vacondio, Dr Corrado Altomare, Dr Angelo Tafuni,
+ Orlando Garcia-Feal, Dr Jose Gonzalez Cao
+
+ EPHYSLAB Environmental Physics Laboratory, Universidade de Vigo
+ School of Mechanical, Aerospace and Civil Engineering, University of Manchester
+
+ DualSPHysics is free software: you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public License
+ as published by the Free Software Foundation, either version 2.1 of
+ the License, or (at your option) any later version.
+
+ DualSPHysics is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with DualSPHysics. If not, see <http://www.gnu.org/licenses/>.
+
+
+DualSPHysics4 [Symmetry] v4.4.010 (21-06-2019)
+===============================================
+Threads by host for parallel execution: 8
+[Initialising JSphCpuSingle  02-02-2020 14:43:03]
+ProgramFile=".../DSPHOnlyVisco/build-source-Desktop-Debug/DualSPHysics4.4CPU"
+ExecutionDir=".../prashant/Qt/DSPHOnlyVisco"
+XmlFile=".../DSPHOnlyVisco/Gen/gen.xml"
+OutputDir=".../Qt/DSPHOnlyVisco/DSPH"
+OutputDataDir=".../Qt/DSPHOnlyVisco/DSPH"
+
+*** Exception (JSphCpuSingle::LoadCaseConfig)
+Text: Case configuration was not found.
+File: Gen/gen.xml
+
+
