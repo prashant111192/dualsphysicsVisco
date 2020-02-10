@@ -1,6 +1,5 @@
-/OutVanilla
-/build-source-Desktop-Debug/
-/build-source-Desktop-Default/
-/Gen/
-/* TestFiles/ */
-/DSPH/
+OutVanilla/
+build-source-Desktop-Debug/
+build-source-Desktop-Default/
+Gen/
+DSPH/
