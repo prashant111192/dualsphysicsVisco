@@ -995,14 +995,14 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
             tfloat4 velrhop2=velrhop[p2];
             if(rsym)velrhop2.y=-velrhop2.y; //<vs_syymmetry>
-
+/*
             //===== Acceleration =====
             if(compute){
               const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w);// + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
               const float p_vpm=-prs*massp2*ftmassp1;
               acep1.x+=p_vpm*frx; acep1.y+=p_vpm*fry; acep1.z+=p_vpm*frz;
             }
-
+*/
             //-Density derivative.
             const float dvx=velp1.x-velrhop2.x, dvy=velp1.y-velrhop2.y, dvz=velp1.z-velrhop2.z;
             if(compute)arp1+=massp2*(dvx*frx+dvy*fry+dvz*frz);
@@ -1039,6 +1039,18 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   const float pi_visc=(-visco*cbar*amubar/robar)*massp2*ftmassp1;
                   acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
                 }
+                //Just the Pressure
+                /*
+                float p_vpm;
+                const float va = (massp1/rhopp1); //Volume
+                const float vb = (massp2/velrhop2.w);
+                const float pbar = (((velrhop2.w * pressp1)+(rhopp1 * press[p2]))/(velrhop2.w+rhopp1))  ;
+                //const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w) + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
+                const float p_vol = (va * va+vb * vb)*pbar;
+                p_vpm=-p_vol/massp1;
+                const float pressure_force = + p_vpm;
+                acep1.x+=pressure_force*frx; acep1.y+=pressure_force*fry; acep1.z+=pressure_force*frz;
+              //InsertComment end here
               }
 */
             //===== Artificial Viscosity =====AND PRESSURE COMBINED
@@ -1061,11 +1073,11 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   const float robar=(rhopp1+velrhop2.w)*0.5f;
                   const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
                   //acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
-                  const float pressure_force = +pi_visc;// - p_vpm;
-                  acep1.x-=pressure_force*frx; acep1.y-=pressure_force*fry; acep1.z-=pressure_force*frz;
+                  const float pressure_force = +pi_visc + p_vpm;
+                  acep1.x+=pressure_force*frx; acep1.y+=pressure_force*fry; acep1.z+=pressure_force*frz;
                 }
               }
-
+                //USELESS!!!!!!!!!
               else{//-Laminar+SPS viscosity. 
                 {//-Laminar contribution.
                   const float robar2=(rhopp1+velrhop2.w);
@@ -1094,39 +1106,38 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                 }
               }
 
-
-              if(compute && !boundp2)
-              {
+            }
+/*
+              if(!boundp2){
+                  const float NU1 = 5.801;
                   //const float NU1 = 0.801;
-
-                  const float NU1 = 0.798;
-
-                 const float va = (massp1/rhopp1); //Volume
-                 const float vb = (massp2/velrhop2.w);
+                  //const float NU1 = 0.798;
+                  const float va = (massp1/rhopp1); //Volume
+                  const float vb = (massp2/velrhop2.w);
                   const float robar=(rhopp1+velrhop2.w);
                   const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
-                 // const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb)/massp1;
-                  /*if (mu_ij_Vol>340282346638528859811704183484516925440.0000000000000000  || mu_ij_Vol <.000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
-                  {
-                      const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb);
-                  }*/
+                  //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb)/massp1;
+                  //if (mu_ij_Vol>340282346638528859811704183484516925440.0000000000000000  || mu_ij_Vol <.000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
+                  //{
+                      //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb);
+                  //}
                   const float dist =sqrt(rr2);
                   //const float visc_factor_x = mu_ij_Vol* dvx/(massp1*dist);
                   //const float visc_factor_y = mu_ij_Vol* dvy/(massp1*dist);
                   //const float visc_factor_z = mu_ij_Vol* dvz/(massp1*dist);
 
 
-                  const float visc_factor_x = mu_ij_Vol* dvx;
-                  const float visc_factor_y = mu_ij_Vol* dvy;
-                  const float visc_factor_z = mu_ij_Vol* dvz;
+                  const float visc_factor_x = mu_ij_Vol* dvx/dist;
+                  const float visc_factor_y = mu_ij_Vol* dvy/dist;
+                  const float visc_factor_z = mu_ij_Vol* dvz/dist;
 
                   //const float frxyz = frx+fry+frz;
 
 
 
-                 acep1.x+=visc_factor_x*fac; acep1.y+=visc_factor_y*fac; acep1.z+=visc_factor_z*fac;
+                  acep1.x+=visc_factor_x*fac; acep1.y+=visc_factor_y*fac; acep1.z+=visc_factor_z*fac;
               }
-            }
+*/
             rsym=(rsymp1 && !rsym && (psingle? psposp1.y-dry: float(posp1.y-dry))<=Dosh); //<vs_syymmetry>
             if(rsym)p2--;                                                                 //<vs_syymmetry>
           }
