@@ -1027,7 +1027,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               shiftdetectp1-=massrhop*(drx*frx+dry*fry+drz*frz);
             }
 /*
-            //===== Viscosity ===== 
+            //===== Viscosity =====
             if(compute){
               const float dot=drx*dvx + dry*dvy + drz*dvz;
               const float dot_rr2=dot/(rr2+Eta2);
@@ -1040,7 +1040,6 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
                 }
               }
-              //https://www.sciencedirect.com/science/article/pii/S002199911200229X#b0015
 */
             //===== Artificial Viscosity =====AND PRESSURE COMBINED
             if(compute){

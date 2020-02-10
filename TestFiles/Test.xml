@@ -1,4 +1,5 @@
-ase name: FluidCube.fcstd -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Case name: FluidCube.fcstd -->
 <case app="DesignSPHysics v0.5.1806-06" date="15-05-2019 18:11:22">
 	<casedef>
 		<constantsdef>
@@ -20,7 +21,7 @@ ase name: FluidCube.fcstd -->
 		<mkconfig boundcount="240" fluidcount="10">
 		</mkconfig>
 		<geometry>
-			<definition dp="0.02" comment="Initial inter-particle distance" units_comment="metres (m)">
+			<definition dp="0.01" comment="Initial inter-particle distance" units_comment="metres (m)">
 				<pointmin x="0.0" y="0.5" z="0.0" />
 				<pointmax x="1.0" y="0.5" z="1.0" />
 			</definition>
