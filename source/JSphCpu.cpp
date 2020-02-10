@@ -1055,7 +1055,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 */
             //===== Artificial Viscosity =====AND PRESSURE COMBINED
             if(compute){
-
+//edited
               float p_vpm;
               const float va = (massp1/rhopp1); //Volume
               const float vb = (massp2/velrhop2.w);
@@ -1064,6 +1064,10 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               const float p_vol = (va * va+vb * vb)*pbar;
               p_vpm=-p_vol/massp1;
 
+              //const float pressure_force = p_vpm;
+              //acep1.x+=pressure_force*frx; acep1.y+=pressure_force*fry; acep1.z+=pressure_force*frz;
+              acep1.x+=p_vpm*frx; acep1.y+=p_vpm*fry; acep1.z+=p_vpm*frz;
+//edited
               const float dot=drx*dvx + dry*dvy + drz*dvz; // Dot product of the velocities and the distance
               const float dot_rr2=dot/(rr2+Eta2);
               //visc=max(dot_rr2,visc); //why visc max??
@@ -1073,8 +1077,8 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   const float robar=(rhopp1+velrhop2.w)*0.5f;
                   const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
                   //acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
-                  const float pressure_force = +pi_visc + p_vpm;
-                  acep1.x+=pressure_force*frx; acep1.y+=pressure_force*fry; acep1.z+=pressure_force*frz;
+                  //const float pressure_force = -pi_visc;// + p_vpm;
+                  acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
                 }
               }
                 //USELESS!!!!!!!!!
