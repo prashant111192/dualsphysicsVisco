@@ -920,8 +920,8 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
   //-Initialise execution with OpenMP. | Inicia ejecucion con OpenMP.
   const int pfin=int(pinit+n);
   #ifdef OMP_USE
-  #pragma omp parallel for schedule (guided)
- #endif
+  //#pragma omp parallel for schedule (guided)
+  #endif
   for(int p1=int(pinit);p1<pfin;p1++){
     float visc=0,arp1=0,deltap1=0;
     tfloat3 acep1=TFloat3(0);
@@ -1119,8 +1119,9 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   const float va = (massp1/rhopp1); //Volume
                   const float vb = (massp2/velrhop2.w);
                   //const float robar=(rhopp1+velrhop2.w);
-                  const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
+                  //const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
                   //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb)/massp1;
+                  const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/1;
                   //if (mu_ij_Vol>340282346638528859811704183484516925440.0000000000000000  || mu_ij_Vol <.000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
                   //{
                       //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb);
@@ -1141,6 +1142,8 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
 
                   acep1.x+=visc_factor_x*fac; acep1.y+=visc_factor_y*fac; acep1.z+=visc_factor_z*fac;
+                  int zz =acep1.x;
+                  zz++;
               }
 
             rsym=(rsymp1 && !rsym && (psingle? psposp1.y-dry: float(posp1.y-dry))<=Dosh); //<vs_syymmetry>

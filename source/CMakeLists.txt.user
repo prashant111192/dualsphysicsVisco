@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.5.2, 2020-02-10T10:54:32. -->
+<!-- Written by QtCreator 4.5.2, 2020-02-11T10:30:17. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -209,7 +209,7 @@
      <value type="int">14</value>
     </valuelist>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">DualSPHysics4.4CPU</value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"> -ompthreads:1 Gen/gen DSPH
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"> -ompthreads:1 ./../SIMS/Gen/gen ./../SIMS/DSPH
 </value>
     <value type="bool" key="CMakeProjectManager.CMakeRunConfiguration.UseTerminal">true</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
