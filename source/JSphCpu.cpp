@@ -1061,7 +1061,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               const float vb = (massp2/velrhop2.w);
               const float pbar = (((velrhop2.w * pressp1)+(rhopp1 * press[p2]))/(velrhop2.w+rhopp1))  ;
               //const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w) + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
-              const float p_vol = (va * va+vb * vb)*pbar;
+              const float p_vol = (va*va + vb*vb) * pbar;
               p_vpm=-p_vol/massp1;
 
               //const float pressure_force = p_vpm;
