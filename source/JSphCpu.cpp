@@ -1113,6 +1113,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
             }
 
               if(!boundp2){
+              //if(compute){
                   //const float NU1 = 5.801;
                   //const float NU1 = 0.801;
                   const float NU1 = 0.798;
