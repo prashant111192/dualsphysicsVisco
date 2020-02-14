@@ -1115,15 +1115,17 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               if(!boundp2){
               //if(compute){
                   //const float NU1 = 5.801;
-                  //const float NU1 = 0.801;
-                  //const float NU1 = 0.798;
-                  const float mass11 = .1;
-                  const float NU1 = 934.0;
+                  //const float NU1 = 0.801;	//dYNAMIC x10^-3
+                  const float NU1 = 0.798e-6;	// Kinematic vis x10^-6
+                  //const float mass11 = .1;
+                  //const float NU1 = 934.0;
+                  //const float NU1 = 934.0;
                   const float va = (massp1/rhopp1); //Volume
                   const float vb = (massp2/velrhop2.w);
                   //const float robar=(rhopp1+velrhop2.w);
                   //const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
                   //const float mu_ij_Vol = 2 * NU1 * ((rhopp1*velrhop2.w)/robar)*(va*va+ vb*vb)/massp1;
+                  //const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb)/massp1;
                   const float mu_ij_Vol = 1 * NU1 * (va*va+ vb*vb);
                   //if (mu_ij_Vol>340282346638528859811704183484516925440.0000000000000000  || mu_ij_Vol <.000000000000000000000000000000000000000000000000000000000000000000000000000000000000001)
                   //{
@@ -1145,10 +1147,10 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
 
                   //acep1.x+=visc_factor_x*fac; acep1.y+=visc_factor_y*fac; acep1.z+=visc_factor_z*fac;
-                  acep1.x+=visc_factor_x*frx; acep1.y+=visc_factor_y*fry; acep1.z+=visc_factor_z*frz;
+                  //acep1.x+=visc_factor_x*frx; acep1.y+=visc_factor_y*fry; acep1.z+=visc_factor_z*frz;
 
-                  int zz =acep1.x;
-                  zz++;
+                  //int zz =acep1.x;
+                  //zz++;
               }
 
             rsym=(rsymp1 && !rsym && (psingle? psposp1.y-dry: float(posp1.y-dry))<=Dosh); //<vs_syymmetry>
