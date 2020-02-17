@@ -1,0 +1,271 @@
+
+
+ <DUALSPHYSICS4> Copyright (c) 2019 by
+ Dr Jose M. Dominguez, Dr Alejandro Crespo,
+ Prof. Moncho Gomez Gesteira,  Prof. Benedict Rogers,
+ Dr Georgios Fourtakas, Prof. Peter Stansby, Dr Ricardo Canelas,
+ Dr Renato Vacondio, Dr Corrado Altomare, Dr Angelo Tafuni,
+ Orlando Garcia-Feal, Dr Jose Gonzalez Cao
+
+ EPHYSLAB Environmental Physics Laboratory, Universidade de Vigo
+ School of Mechanical, Aerospace and Civil Engineering, University of Manchester
+
+ DualSPHysics is free software: you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public License
+ as published by the Free Software Foundation, either version 2.1 of
+ the License, or (at your option) any later version.
+
+ DualSPHysics is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with DualSPHysics. If not, see <http://www.gnu.org/licenses/>.
+
+
+DualSPHysics4 [Symmetry] v4.4.010 (21-06-2019)
+===============================================
+Threads by host for parallel execution: 8
+[Initialising JSphCpuSingle  31-01-2020 10:36:25]
+ProgramFile=".../DSPHOnlyVisco/build-source-Desktop-Default/DualSPHysics4.4CPU"
+ExecutionDir=".../Qt/DSPHOnlyVisco/build-source-Desktop-Default"
+XmlFile=".../build-source-Desktop-Default/Gen/gen.xml"
+OutputDir=".../DSPHOnlyVisco/build-source-Desktop-Default/DSPH]"
+OutputDataDir=".../DSPHOnlyVisco/build-source-Desktop-Default/DSPH]"
+
+*** WARNING: The options IncZ and DomainFixedXXXX are deprecated.
+
+**Basic case configuration is loaded
+**Special case configuration is loaded
+Loading initial state of particles...
+Loaded particles: 1300
+MapRealPos(border)=(-0.00141421,0.498586,-0.01)-(0.501414,0.501414,0.99)
+MapRealPos(final)=(-0.00141421,0.498586,-0.01)-(0.501414,0.501414,0.99)
+**Initial state of particles is loaded
+**2D-Simulation parameters:
+CaseName="gen"
+RunName="gen"
+Simulate2DPosY=0.5
+Symmetry=False
+PosDouble="0: Uses and stores in single precision"
+SvTimers=True
+StepAlgorithm="Verlet"
+VerletSteps=40
+Kernel="Wendland"
+Viscosity="Artificial"
+Visco=0.010000
+ViscoBoundFactor=1.000000
+DeltaSph="None"
+Shifting="None"
+RigidAlgorithm="None"
+FloatingCount=0
+CaseNp=1300
+CaseNbound=590
+CaseNfixed=590
+CaseNmoving=0
+CaseNfloat=0
+CaseNfluid=710
+PeriodicActive="Axis-Z"
+PeriodicZinc=(0,0,-1)
+Dx=0.02
+H=0.028284
+CoefficientH=1
+CteB=549360.000000
+Gamma=7.000000
+RhopZero=1000.000000
+Cs0=62.0123
+CFLnumber=0.200000
+DtIni=0.000456108
+DtMin=2.28054e-05
+DtAllParticles=False
+MassFluid=0.400000
+MassBound=0.400000
+Awen (Wendland)=696.250061
+Bwen (Wendland)=-123089.625000
+TimeMax=1
+TimePart=0.01
+Gravity=(0.000000,0.000000,-9.810000)
+NpMinimum=590
+RhopOut=True
+RhopOutMin=0.000000
+RhopOutMax=99999998430674944.000000
+**Requested cpu memory for 1310 particles: 0.2 MB.
+CellMode="2H"
+Hdiv=1
+MapCells=(9,1,20)
+DomCells=(9,1,20)
+DomCellCode="11_9_12"
+**JSphCpu: Requesting cpu memory for 1501 particles: 0.2 MB.
+**CellDiv: Requested cpu memory for 1538 particles: 0.0 MB.
+**CellDiv: Requested cpu memory for 420 cells (CellMode=2H): 0.0 MB.
+ 
+RunMode="Pos-Single - OpenMP(Threads:8)"
+ 
+Particle summary:
+  Fixed....: 590  id:(0-589)   MKs:1 (11)
+  Moving...: 0
+  Floating.: 0
+  Fluid....: 710  id:(590-1299)   MKs:3 (1-3)
+
+Total particles: 1300 (bound=590 (fx=590 mv=0 ft=0) fluid=710)
+Total MK blocks: 4 (bound=1 (fx=1 mv=0 ft=0) fluid=3)
+ 
+Allocated memory in CPU: 248108 (0.24 MB)
+Part_0000        1300 particles successfully stored
+
+[WARNINGS]
+1. The options IncZ and DomainFixedXXXX are deprecated.
+
+[Initialising simulation (1p8l5xoe)  31-01-2020 10:36:25]
+PART       PartTime      TotalSteps    Steps    Time/Sec   Finish time        
+=========  ============  ============  =======  =========  ===================
+**JSphCpu: Requesting cpu memory for 1664 particles: 0.2 MB.
+**CellDiv: Requested cpu memory for 1702 particles: 0.1 MB.
+Part_0001      0.010008           110      110       5.31  31-01-2020 10:36:30
+Part_0002      0.020010           220      110       4.44  31-01-2020 10:36:29
+Part_0003      0.030080           331      111       7.41  31-01-2020 10:36:30
+Part_0004      0.040046           441      110       4.71  31-01-2020 10:36:30
+Part_0005      0.050075           552      111       5.29  31-01-2020 10:36:31
+Part_0006      0.060082           663      111       4.63  31-01-2020 10:36:30
+Part_0007      0.070073           774      111       5.41  31-01-2020 10:36:30
+Part_0008      0.080034           885      111       5.35  31-01-2020 10:36:30
+Part_0009      0.090073           997      112       4.61  31-01-2020 10:36:30
+Part_0010      0.100004          1108      111       5.50  31-01-2020 10:36:30
+Part_0011      0.110084          1221      113       4.56  31-01-2020 10:36:30
+Part_0012      0.120066          1333      112       6.68  31-01-2020 10:36:30
+Part_0013      0.130056          1447      114       5.64  31-01-2020 10:36:30
+Part_0014      0.140055          1560      113       5.52  31-01-2020 10:36:30
+Part_0015      0.150065          1674      114       4.75  31-01-2020 10:36:30
+Part_0016      0.160075          1788      114       5.65  31-01-2020 10:36:30
+Part_0017      0.170041          1903      115       4.71  31-01-2020 10:36:30
+Part_0018      0.180062          2018      115       5.56  31-01-2020 10:36:30
+Part_0019      0.190053          2134      116       5.66  31-01-2020 10:36:30
+Part_0020      0.200003          2248      114       4.75  31-01-2020 10:36:30
+Part_0021      0.210014          2363      115       5.90  31-01-2020 10:36:30
+Part_0022      0.220085          2480      117       5.73  31-01-2020 10:36:30
+Part_0023      0.230048          2597      117       5.79  31-01-2020 10:36:31
+Part_0024      0.240007          2712      115       4.75  31-01-2020 10:36:31
+Part_0025      0.250061          2829      117       5.50  31-01-2020 10:36:31
+Part_0026      0.260058          2945      116       5.82  31-01-2020 10:36:30
+Part_0027      0.270005          3064      119       4.95  31-01-2020 10:36:30
+Part_0028      0.280035          3181      117       5.53  31-01-2020 10:36:30
+Part_0029      0.290013          3299      118       4.88  31-01-2020 10:36:30
+Part_0030      0.300047          3417      118       5.63  31-01-2020 10:36:30
+Part_0031      0.310035          3538      121       5.09  31-01-2020 10:36:30
+Part_0032      0.320053          3658      120       6.08  31-01-2020 10:36:30
+Part_0033      0.330045          3777      119       5.52  31-01-2020 10:36:30
+Part_0034      0.340000          3897      120       5.07  31-01-2020 10:36:30
+Part_0035      0.350030          4016      119       6.04  31-01-2020 10:36:30
+Part_0036      0.360048          4135      119       4.85  31-01-2020 10:36:30
+Part_0037      0.370044          4262      127       5.85  31-01-2020 10:36:30
+Part_0038      0.380058          4389      127       5.42  31-01-2020 10:36:30
+Part_0039      0.390040          4513      124       6.33  31-01-2020 10:36:30
+Part_0040      0.400001          4641      128       6.01  31-01-2020 10:36:30
+Part_0041      0.410004          4772      131       8.96  31-01-2020 10:36:31
+Part_0042      0.420037          4904      132       5.57  31-01-2020 10:36:31
+Part_0043      0.430020          5035      131       6.25  31-01-2020 10:36:31
+Part_0044      0.440005          5167      132       6.19  31-01-2020 10:36:31
+Part_0045      0.450041          5298      131       5.59  31-01-2020 10:36:31
+Part_0046      0.460014          5434      136       6.44  31-01-2020 10:36:31
+Part_0047      0.470015          5572      138       6.56  31-01-2020 10:36:30
+Part_0048      0.480009          5715      143       6.49  31-01-2020 10:36:30
+Part_0049      0.490043          5847      132       6.08  31-01-2020 10:36:30
+Part_0050      0.500030          5977      130       6.15  31-01-2020 10:36:30
+Part_0051      0.510053          6115      138       5.48  31-01-2020 10:36:30
+Part_0052      0.520063          6246      131       6.13  31-01-2020 10:36:30
+Part_0053      0.530040          6375      129       6.31  31-01-2020 10:36:30
+Part_0054      0.540029          6506      131       6.43  31-01-2020 10:36:30
+Part_0055      0.550036          6638      132       6.63  31-01-2020 10:36:30
+Part_0056      0.560074          6779      141       7.00  31-01-2020 10:36:30
+Part_0057      0.570017          6916      137       6.34  31-01-2020 10:36:31
+Part_0058      0.580011          7056      140       6.56  31-01-2020 10:36:31
+Part_0059      0.590053          7193      137       6.63  31-01-2020 10:36:31
+Part_0060      0.600028          7330      137       6.36  31-01-2020 10:36:31
+Part_0061      0.610041          7479      149       6.86  31-01-2020 10:36:31
+Part_0062      0.620020          7619      140       6.57  31-01-2020 10:36:31
+Part_0063      0.630017          7767      148       7.32  31-01-2020 10:36:31
+Part_0064      0.640054          7909      142       6.47  31-01-2020 10:36:31
+Part_0065      0.650056          8055      146       6.91  31-01-2020 10:36:31
+Part_0066      0.660031          8197      142       6.59  31-01-2020 10:36:30
+Part_0067      0.670030          8346      149       6.71  31-01-2020 10:36:30
+Part_0068      0.680073          8493      147       6.54  31-01-2020 10:36:30
+Part_0069      0.690063          8641      148       6.67  31-01-2020 10:36:30
+Part_0070      0.700060          8781      140       6.49  31-01-2020 10:36:30
+Part_0071      0.710004          8918      137       5.65  31-01-2020 10:36:30
+Part_0072      0.720073          9060      142       6.54  31-01-2020 10:36:31
+Part_0073      0.730001          9200      140       5.68  31-01-2020 10:36:31
+Part_0074      0.740038          9349      149       7.33  31-01-2020 10:36:31
+Part_0075      0.750014          9494      145       6.69  31-01-2020 10:36:31
+Part_0076      0.760038          9642      148       6.98  31-01-2020 10:36:31
+Part_0077      0.770016          9784      142       6.55  31-01-2020 10:36:31
+Part_0078      0.780064          9926      142       6.50  31-01-2020 10:36:31
+Part_0079      0.790055         10067      141       6.43  31-01-2020 10:36:31
+Part_0080      0.800017         10211      144       7.04  31-01-2020 10:36:31
+Part_0081      0.810063         10359      148       7.03  31-01-2020 10:36:31
+Part_0082      0.820040         10507      148       7.51  31-01-2020 10:36:31
+Part_0083      0.830015         10658      151       6.94  31-01-2020 10:36:31
+Part_0084      0.840061         10805      147       6.93  31-01-2020 10:36:30
+Part_0085      0.850071         10949      144       6.58  31-01-2020 10:36:30
+Part_0086      0.860038         11092      143       6.80  31-01-2020 10:36:30
+Part_0087      0.870061         11237      145       8.23  31-01-2020 10:36:31
+Part_0088      0.880070         11382      145       6.67  31-01-2020 10:36:31
+Part_0089      0.890036         11528      146       6.76  31-01-2020 10:36:31
+Part_0090      0.900024         11690      162       7.20  31-01-2020 10:36:31
+Part_0091      0.910066         11842      152       6.70  31-01-2020 10:36:31
+Part_0092      0.920002         11993      151       6.85  31-01-2020 10:36:31
+Part_0093      0.930031         12141      148       6.62  31-01-2020 10:36:31
+Part_0094      0.940062         12283      142       6.36  31-01-2020 10:36:31
+Part_0095      0.950054         12430      147       6.56  31-01-2020 10:36:31
+Part_0096      0.960033         12577      147       6.80  31-01-2020 10:36:31
+Part_0097      0.970001         12731      154       6.86  31-01-2020 10:36:31
+Part_0098      0.980021         12888      157       7.16  31-01-2020 10:36:31
+Part_0099      0.990003         13036      148       6.73  31-01-2020 10:36:31
+Part_0100      1.000021         13185      149       6.70  31-01-2020 10:36:31
+
+[Simulation finished  31-01-2020 10:36:31]
+Particles of simulation (initial): 1300
+DTs adjusted to DtMin............: 0
+Excluded particles...............: 0
+Total Runtime....................: 6.161796 sec.
+Simulation Runtime...............: 6.159341 sec.
+Time per second of simulation....: 6.159213 sec.
+Steps per second.................: 2140.651123
+Steps of simulation..............: 13185
+PART files.......................: 101
+Maximum number of particles......: 1458
+Maximum number of cells..........: 180
+CPU Memory.......................: 274220 (0.26 MB)
+ 
+[CPU Timers]
+VA-Init..........................: 0.002457 sec.
+NL-Limits........................: 0.214283 sec.
+NL-MakeSort......................: 0.214862 sec.
+NL-SortData......................: 0.212338 sec.
+NL-OutCheck......................: 0.000360 sec.
+CF-PreForces.....................: 0.399585 sec.
+CF-Forces........................: 4.468822 sec.
+SU-Shifting......................: 0.000000 sec.
+SU-ComputeStep...................: 0.413086 sec.
+SU-Floating......................: 0.000000 sec.
+SU-Motion........................: 0.000000 sec.
+SU-Periodic......................: 0.206244 sec.
+SU-ResizeNp......................: 0.000039 sec.
+SU-SavePart......................: 0.019765 sec.
+SU-Chrono........................: 0.000000 sec.
+SU-BoundCorr.....................: 0.000000 sec.
+SU-InOut.........................: 0.000000 sec.
+ 
+[Output files]
+- CfgInit_Domain.vtk..: Saves the limits of the case and the simulation domain limits.
+- CfgInit_MapCells.vtk: Saves the cell division of the simulation domain.
+- PartInfo.ibi4.......: Binary file with execution information for each instant (input for PartInfo program).
+- PartOut_???.obi4....: Binary file with particles excluded during simulation (input for PartVtkOut program).
+- Part_????.bi4.......: Binary file with particle data in different instants.
+- Part_Head.ibi4......: Binary file with basic information of simulation data.
+- Run.csv.............: One line CSV file with execution parameters and other simulation data.
+- Run.out.............: Log file of the simulation.
+ 
+[WARNINGS]
+1. The options IncZ and DomainFixedXXXX are deprecated.
+ 

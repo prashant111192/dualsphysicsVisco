@@ -1073,7 +1073,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               //visc=max(dot_rr2,visc); //why visc max??
               if(!lamsps){//-Artificial viscosity.
                 if(dot<0){
-                  const float amubar=H*dot_rr2;  //amubar=CTE.h*dot/(rr2+CTE.eta2);
+                  const float amubar=H*dot_rr2;  //amubar=CTE.h*dot/(rr2+CTE.eta2);Y
                   const float robar=(rhopp1+velrhop2.w)*0.5f;
                   const float pi_visc=(-visco*cbar*amubar/robar)*massp2;
                   //acep1.x-=pi_visc*frx; acep1.y-=pi_visc*fry; acep1.z-=pi_visc*frz;
@@ -1116,7 +1116,8 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               //if(compute){
                   //const float NU1 = 5.801;
                   //const float NU1 = 0.801;	//dYNAMIC x10^-3
-                  const float NU1 = 0.798e-6;	// Kinematic vis x10^-6
+                  //const float NU1 = 0.798e-6;	// Kinematic vis x10^-6 WATER
+                  const float NU1 = 73-6;	// Kinematic vis x10^-6 HONEY
                   //const float mass11 = .1;
                   //const float NU1 = 934.0;
                   //const float NU1 = 934.0;
@@ -1147,7 +1148,7 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 
 
                   //acep1.x+=visc_factor_x*fac; acep1.y+=visc_factor_y*fac; acep1.z+=visc_factor_z*fac;
-                  //acep1.x+=visc_factor_x*frx; acep1.y+=visc_factor_y*fry; acep1.z+=visc_factor_z*frz;
+                  acep1.x+=visc_factor_x*frx; acep1.y+=visc_factor_y*fry; acep1.z+=visc_factor_z*frz;
 
                   //int zz =acep1.x;
                   //zz++;
