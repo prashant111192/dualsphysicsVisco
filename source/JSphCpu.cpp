@@ -919,9 +919,9 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
   for(int th=0;th<OmpThreads;th++)viscth[th*OMP_STRIDE]=0;
   //-Initialise execution with OpenMP. | Inicia ejecucion con OpenMP.
   const int pfin=int(pinit+n);
-  #ifdef OMP_USE
-    #pragma omp parallel for schedule (guided)
-  #endif
+  //#ifdef OMP_USE
+    //#pragma omp parallel for schedule (guided)
+  //#endif
   for(int p1=int(pinit);p1<pfin;p1++){
     float visc=0,arp1=0,deltap1=0;
     tfloat3 acep1=TFloat3(0);
@@ -1055,19 +1055,20 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
 */
             //===== Artificial Viscosity =====AND PRESSURE COMBINED
             if(compute){
-//edited
+//edited Pressure
               float p_vpm;
               const float va = (massp1/rhopp1); //Volume
               const float vb = (massp2/velrhop2.w);
               const float pbar = (((velrhop2.w * pressp1)+(rhopp1 * press[p2]))/(velrhop2.w+rhopp1))  ;
               //const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w) + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
               const float p_vol = (va*va + vb*vb) * pbar;
-              p_vpm=-p_vol/massp1;
+              p_vpm=-p_vol;
+              //p_vpm=-p_vol/massp1;
 
               //const float pressure_force = p_vpm;
               //acep1.x+=pressure_force*frx; acep1.y+=pressure_force*fry; acep1.z+=pressure_force*frz;
               acep1.x+=p_vpm*frx; acep1.y+=p_vpm*fry; acep1.z+=p_vpm*frz;
-//edited
+//edited Artificial Visco
               const float dot=drx*dvx + dry*dvy + drz*dvz; // Dot product of the velocities and the distance
               const float dot_rr2=dot/(rr2+Eta2);
               //visc=max(dot_rr2,visc); //why visc max??
