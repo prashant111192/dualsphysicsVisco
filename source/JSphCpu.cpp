@@ -919,9 +919,9 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
   for(int th=0;th<OmpThreads;th++)viscth[th*OMP_STRIDE]=0;
   //-Initialise execution with OpenMP. | Inicia ejecucion con OpenMP.
   const int pfin=int(pinit+n);
-  //#ifdef OMP_USE
-    //#pragma omp parallel for schedule (guided)
-  //#endif
+  #ifdef OMP_USE
+    #pragma omp parallel for schedule (guided)
+  #endif
   for(int p1=int(pinit);p1<pfin;p1++){
     float visc=0,arp1=0,deltap1=0;
     tfloat3 acep1=TFloat3(0);
@@ -1062,7 +1062,9 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               const float pbar = (((velrhop2.w * pressp1)+(rhopp1 * press[p2]))/(velrhop2.w+rhopp1))  ;
               //const float prs=(pressp1+press[p2])/(rhopp1*velrhop2.w) + (tker==KERNEL_Cubic? GetKernelCubicTensil(rr2,rhopp1,pressp1,velrhop2.w,press[p2]): 0);
               const float p_vol = (va*va + vb*vb) * pbar;
-              p_vpm=-p_vol;
+              //p_vpm=-p_vol;			//removed mass
+              //p_vpm=-p_vol;			//removed mass
+              p_vpm=-p_vol/massp1;
               //p_vpm=-p_vol/massp1;
 
               //const float pressure_force = p_vpm;
@@ -1117,8 +1119,8 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
               //if(compute){
                   //const float NU1 = 5.801;
                   //const float NU1 = 0.801;	//dYNAMIC x10^-3
-                  //const float NU1 = 0.798e-6;	// Kinematic vis x10^-6 WATER
-                  const float NU1 = 73-6;	// Kinematic vis x10^-6 HONEY
+                  const float NU1 = 0.798e-6;	// Kinematic vis x10^-6 WATER
+                  //const float NU1 = 73-e6;	// Kinematic vis x10^-6 HONEY
                   //const float mass11 = .1;
                   //const float NU1 = 934.0;
                   //const float NU1 = 934.0;
@@ -1140,9 +1142,9 @@ template<bool psingle,TpKernel tker,TpFtMode ftmode,bool lamsps,TpDeltaSph tdelt
                   //const float visc_factor_z = mu_ij_Vol* dvz/(massp1*dist);
 
 
-                  const float visc_factor_x = mu_ij_Vol* velocity/dist;
-                  const float visc_factor_y = mu_ij_Vol* velocity/dist;
-                  const float visc_factor_z = mu_ij_Vol* velocity/dist;
+                  const float visc_factor_x = mu_ij_Vol* velocity/(dist*massp1);
+                  const float visc_factor_y = mu_ij_Vol* velocity/(dist*massp1);
+                  const float visc_factor_z = mu_ij_Vol* velocity/(dist*massp1);
 
                   //const float frxyz = frx+fry+frz;
 
